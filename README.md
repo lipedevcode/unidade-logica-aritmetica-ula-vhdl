@@ -15,5 +15,5 @@ Unidade Lógica Aritmética (ULA) com 7 operações:
 
 * Necessário ter alguma versão do quartus prime instalada.
 * Necessário ter logisim evolution
-`Logisim-evolution` is available for
-[download in compiled form](https://github.com/logisim-evolution/logisim-evolution/releases)
+`Logisim-evolution`
+[download](https://github.com/logisim-evolution/logisim-evolution/releases)
