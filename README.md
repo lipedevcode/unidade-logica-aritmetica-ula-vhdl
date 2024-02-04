@@ -1,2 +1,2 @@
 # unidade-logica-aritmetica-ula-vhdl
-Unidade Lógica Aritmética (ULA) com 7 operações: SOMA, SUBTRAÇÃO, AND, OR, NOT, DESLOCAMENTO DE BIT
+Unidade Lógica Aritmética (ULA) com 7 operações: soma, subtração, and, or, not, deslocamento de bit.
