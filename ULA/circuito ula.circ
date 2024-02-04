@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project source="3.8.0" version="1.0">
+  This file is intended to be loaded by Logisim-evolution v3.8.0(https://github.com/logisim-evolution/).
+
+  <lib desc="#Wiring" name="0">
+    <tool name="Pin">
+      <a name="appearance" val="classic"/>
+    </tool>
+  </lib>
+  <lib desc="#Gates" name="1"/>
+  <lib desc="#Plexers" name="2"/>
+  <lib desc="#Arithmetic" name="3"/>
+  <lib desc="#Memory" name="4"/>
+  <lib desc="#I/O" name="5"/>
+  <lib desc="#TTL" name="6"/>
+  <lib desc="#TCL" name="7">
+    <tool name="TclGeneric">
+      <a name="content">--------------------------------------------------------------------------------&#13;
+-- HEIG-VD, institute REDS, 1400 Yverdon-les-Bains&#13;
+-- Project :&#13;
+-- File    :&#13;
+-- Autor   :&#13;
+-- Date    :&#13;
+--&#13;
+--------------------------------------------------------------------------------&#13;
+-- Description :&#13;
+--&#13;
+--------------------------------------------------------------------------------&#13;
+&#13;
+library ieee;&#13;
+  use ieee.std_logic_1164.all;&#13;
+  --use ieee.numeric_std.all;&#13;
+&#13;
+entity VHDL_Component is&#13;
+  port(&#13;
+  ------------------------------------------------------------------------------&#13;
+  --Insert input ports below&#13;
+    horloge_i  : in  std_logic;                    -- input bit example&#13;
+    val_i      : in  std_logic_vector(3 downto 0); -- input vector example&#13;
+  ------------------------------------------------------------------------------&#13;
+  --Insert output ports below&#13;
+    max_o      : out std_logic;                    -- output bit example&#13;
+    cpt_o      : out std_logic_vector(3 downto 0)  -- output vector example&#13;
+    );&#13;
+end VHDL_Component;&#13;
+&#13;
+--------------------------------------------------------------------------------&#13;
+--Complete your VHDL description below&#13;
+architecture type_architecture of VHDL_Component is&#13;
+&#13;
+&#13;
+begin&#13;
+&#13;
+&#13;
+end type_architecture;&#13;
+</a>
+    </tool>
+  </lib>
+  <lib desc="#Base" name="8"/>
+  <lib desc="#BFH-Praktika" name="9"/>
+  <lib desc="#Input/Output-Extra" name="10"/>
+  <lib desc="#Soc" name="11"/>
+  <main name="main"/>
+  <options>
+    <a name="gateUndefined" val="ignore"/>
+    <a name="simlimit" val="1000"/>
+    <a name="simrand" val="0"/>
+  </options>
+  <mappings>
+    <tool lib="8" map="Button2" name="Poke Tool"/>
+    <tool lib="8" map="Button3" name="Menu Tool"/>
+    <tool lib="8" map="Ctrl Button1" name="Menu Tool"/>
+  </mappings>
+  <toolbar>
+    <tool lib="8" name="Poke Tool"/>
+    <tool lib="8" name="Edit Tool"/>
+    <tool lib="8" name="Wiring Tool"/>
+    <tool lib="8" name="Text Tool"/>
+    <sep/>
+    <tool lib="0" name="Pin"/>
+    <tool lib="0" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+    </tool>
+    <sep/>
+    <tool lib="1" name="NOT Gate"/>
+    <tool lib="1" name="AND Gate"/>
+    <tool lib="1" name="OR Gate"/>
+    <tool lib="1" name="XOR Gate"/>
+    <tool lib="1" name="NAND Gate"/>
+    <tool lib="1" name="NOR Gate"/>
+    <sep/>
+    <tool lib="4" name="D Flip-Flop"/>
+    <tool lib="4" name="Register"/>
+  </toolbar>
+  <circuit name="main">
+    <a name="appearance" val="logisim_evolution"/>
+    <a name="circuit" val="main"/>
+    <a name="circuitnamedboxfixedsize" val="true"/>
+    <a name="simulationFrequency" val="4.0"/>
+    <comp lib="0" loc="(230,310)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+    </comp>
+    <comp lib="0" loc="(230,330)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+    </comp>
+    <comp lib="0" loc="(300,400)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="width" val="3"/>
+    </comp>
+    <comp lib="0" loc="(350,270)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="width" val="4"/>
+    </comp>
+    <comp lib="0" loc="(350,290)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="width" val="4"/>
+    </comp>
+    <comp lib="0" loc="(570,290)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+    </comp>
+    <comp lib="0" loc="(590,270)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="4"/>
+    </comp>
+    <comp loc="(570,270)" name="ULA">
+      <a name="appearance" val="logisim_evolution"/>
+    </comp>
+    <wire from="(230,310)" to="(350,310)"/>
+    <wire from="(230,330)" to="(350,330)"/>
+    <wire from="(300,400)" to="(350,400)"/>
+    <wire from="(350,350)" to="(350,400)"/>
+    <wire from="(570,270)" to="(590,270)"/>
+  </circuit>
+  <vhdl name="ULA">library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity ULA is
+    Port ( --portas logicas
+        A, B          : in  std_logic_vector(3 downto 0);
+        Shift		  : in  std_logic;
+        Clock         : in  std_logic;
+        Result        : out std_logic_vector(3 downto 0); 
+        Overflow      : out std_logic;
+        OpSelect      : in  std_logic_vector(2 downto 0)   
+    );
+end ULA;
+
+architecture TypeArchitecture of ULA is --descreve o comportamento do circuito
+begin 
+	process(A, B, Shift, Clock, OpSelect) --função process define as ações sequenciais do circuito, dentro do parametro, estão as entradas que serão utilizadas para definir uma ação
+		variable temp_result : std_logic_vector(3 downto 0); -- variaveis auxiliares
+		variable temp_overflow : std_logic;
+		variable aux_result : std_logic_vector(3 downto 0);
+		
+	begin
+		case OpSelect is --seletor de operações
+			when "000" =&gt; --soma
+				temp_result := std_logic_vector(unsigned(A) + unsigned(B)); 
+				if to_integer(unsigned(A)) + to_integer(unsigned(B)) &gt; 15 then --soma de a e b &gt; 1111
+					temp_overflow := '1';
+				else 
+					temp_overflow := '0';
+				end if;
+			when "001" =&gt; --subtração
+				if unsigned(A) &lt; unsigned(B) then
+					temp_result := std_logic_vector(unsigned(B) - unsigned(A));
+					temp_overflow := '1'; --sinal negativo
+				else
+					temp_result := std_logic_vector(unsigned(A) - unsigned(B));
+					temp_overflow := '0';
+				end if;
+			when "010" =&gt; --and
+				temp_result := A AND B;
+				temp_overflow := '0';
+			when "011" =&gt; --or
+				temp_result := A OR B;
+				temp_overflow := '0';
+			when "100" =&gt; --not (porta A)
+				temp_result := NOT A;
+				temp_overflow := '0';
+			when "101" =&gt; --deslocamento à esquerda (porta A)
+				if Shift = '1' then
+					if aux_result = "UUUU" then --inicializa variaveis auxiliares, caso estejam undefined.
+						aux_result := A(3 downto 0);
+						temp_result := A(3 downto 0);
+					end if;
+					if rising_edge(Clock) then --clock borda de subida
+						for i in 0 to 2 loop
+							temp_result(i+1) := aux_result(i);
+						end loop;
+						temp_result(0) := '0';
+					else
+						aux_result := temp_result(3 downto 0); --atualizo a variavel aux_result para um possivel proximo deslocamento
+					end if;
+				else
+					temp_result := A(3 downto 0);
+					aux_result := "UUUU";
+				end if;
+			when "110" =&gt; --deslocamento à direita
+				if Shift = '1' then
+					if aux_result = "UUUU" then
+						aux_result := A(3 downto 0);
+						temp_result := A(3 downto 0);
+					end if;
+					if rising_edge(CLock) then
+						for i in 0 to 2 loop
+							temp_result(2-i) := aux_result(3-i);
+						end loop;
+						temp_result(3) := '0';
+					else
+						aux_result := temp_result(3 downto 0);
+					end if;
+				else
+					temp_result := A(3 downto 0);
+					aux_result := "UUUU";
+				end if;
+			when others =&gt; --para valores que não sejam igual a nenhum dos códigos de operação
+				temp_result :=(others =&gt; '0');
+		end case;
+		Result &lt;= temp_result (3 downto 0);
+		Overflow &lt;= temp_overflow;
+		
+	end process;
+end TypeArchitecture;</vhdl>
+</project>
